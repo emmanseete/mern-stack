@@ -32,7 +32,7 @@ app.post("/api/products", async (req, res) => {
         await newProduct.save();
         res.status(201).json({ success: true, data: newProduct });
     } catch (error) {
-        console.error(`Error in saving the product: ${ error.message }`);
+        console.error(`Error: ${ error.message }`);
         res.status(500).json({ success: false, message: "Server Error" })
     }
 });
