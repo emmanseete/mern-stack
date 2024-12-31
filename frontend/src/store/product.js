@@ -10,22 +10,14 @@ export const useProductStore = create((set) => ({
 
         const res = await fetch('/api/products', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct)
         })
 
         const data = await res.json()
 
-        set((state) => ({products: [
-            ...state.products,
-            data.data
-        ]}))
+        set((state) => ({products: [ ...state.products, data.data ]}))
 
-        return {
-            success: true,
-            message: 'Product created successfully'
-        }
+        return { success: true, message: 'Product created successfully' }
     }
 }))
