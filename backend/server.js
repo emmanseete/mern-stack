@@ -1,17 +1,17 @@
-import express from "express";
-import dotenv from "dotenv";
-import { connectDB } from "./config/db.js";
-import productRoutes from "./routes/product.js";
+import express from 'express'
+import dotenv from 'dotenv'
+import { connectDatabase } from './config/database.js'
+import productRoutes from './routes/product.route.js'
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const app = express()
+const port = process.env.PORT || 5000
 
-app.use(express.json()); // allows us to accept JSON data in the req.body
-app.use("/api/products", productRoutes);
+app.use(express.json())
+app.use('/api/products', productRoutes)
 
-app.listen(PORT, () => {
-    connectDB();
-    console.log(`Server started at http://localhost:${ PORT }`);
-});
+app.listen(port, async () => {
+    await connectDatabase()
+    console.log(`Server started at http://localhost:${ port }`)
+})
